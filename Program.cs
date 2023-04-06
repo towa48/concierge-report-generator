@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Microsoft.Extensions.Configuration;
 
 namespace Concierge;
@@ -6,6 +7,8 @@ namespace Concierge;
 class Program
 {
     static void Main(string[] args) {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
         var builder = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
 
@@ -16,7 +19,17 @@ class Program
             throw new ArgumentNullException("Input");
         }
 
-        var reader = new ReportReader(fileName);
+        var tab = configuration.GetSection("AppSettings")["Tab"];
+        if (string.IsNullOrEmpty(tab)) {
+            throw new ArgumentNullException("Tab");
+        }
+
+        var month = configuration.GetSection("AppSettings")["Month"];
+        if (string.IsNullOrEmpty(month)) {
+            throw new ArgumentNullException("Month");
+        }
+
+        var reader = new ReportReader(fileName, tab, int.Parse(month));
         reader.ReadAsync();
 
         Console.WriteLine("Done.");
