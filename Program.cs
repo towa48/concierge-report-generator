@@ -30,7 +30,11 @@ class Program
         }
 
         var reader = new ReportReader(fileName, tab, int.Parse(month));
-        reader.ReadAsync();
+        var neighbors = reader.Read();
+
+        foreach(var n in neighbors) {
+            Console.WriteLine($"{n.Key}: {n.Value}");
+        }
 
         Console.WriteLine("Done.");
     }
