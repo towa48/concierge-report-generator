@@ -1,0 +1,12 @@
+# Build folders
+/bin
+/obj
+
+# User settings
+/.vs
+
+# Input and output files
+*.xls
+*.xlsx
+*.pdf
+.~*
