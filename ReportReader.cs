@@ -29,7 +29,8 @@ class ReportReader {
 
         var result = new Dictionary<int, bool>();
         for(var i=3; i<apartments+3; i++) {
-            var apt = int.Parse(tab?.Rows[i][aptColumn].ToString());
+            var aptValue = tab?.Rows[i][aptColumn].ToString();
+            var apt = int.Parse(aptValue!);
             var amount = tab?.Rows[i][monthColumn].ToString();
             var amount2 = tab?.Rows[i][monthColumn].ToString();
 

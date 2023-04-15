@@ -21,7 +21,10 @@
   <ItemGroup>
     <Content Include="*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content> 
+    </Content>
+    <Content Include="template.odt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
